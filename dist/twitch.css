@@ -1,0 +1,23 @@
+.starter {
+	margin-top: 50px;
+	position: center;
+	text-align: center;
+}
+
+.largefont {
+	font-size: 48px;
+}
+
+.gamestable {
+	margin-top: 40px;
+}
+
+td {
+	background-color: #272b30;
+	border-bottom: 1px solid rgb(75, 75, 75);
+}
+
+tr:hover > td {
+	background-color: #49515A;
+	cursor: pointer;
+}
