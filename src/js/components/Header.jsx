@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class Header extends React.Component {
 

@@ -7,16 +7,15 @@ export default class GamesTable extends React.Component {
 
 	render() {
 		console.log(this.props.games.top);
-		const gamearray = this.props.games.top;
+		const gameArray = this.props.games.top;
 
-		const gamestorender = gamearray.map((data, i) => 
-			<GameStats key={i} game={data.game.name} viewers={data.viewers} summary={this.props.summary} />
+		const gamesToRender = gameArray.map( (data, i) => 
+			<GameStats key={i} id={data.game._id} game={data.game.name} viewers={data.viewers} summary={this.props.summary} />
 			);
 
 
 		return (
 			<div className="container-fluid col-md-6 gamestable">
-			<h4 className="text-muted"><strong>Top Games</strong></h4>
 				<table className="table table-hover">
 					<thead>
 						<tr>
@@ -26,7 +25,7 @@ export default class GamesTable extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-						{gamestorender}
+						{gamesToRender}
 					</tbody>
 				</table>
 			</div>
