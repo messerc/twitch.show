@@ -7,7 +7,10 @@ module.exports = {
   entry: path.join(srcPath, 'js', 'client.js'),
   output: {
       path: buildPath,
-      filename: "bundle.js"
+
+      publicPath: '/webpack-demo/',
+      filename: 'twitchnowreact.bundle.js'
+      chunkFilename: 'bundle.js'
   },
   module: {
       loaders: [
