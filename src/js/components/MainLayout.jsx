@@ -30,7 +30,7 @@ export default class MainLayout extends React.Component {
 
 	$.ajax({
 		type: 'GET',
-		url: 'https://api.twitch.tv/kraken/games/top?limit=20',
+		url: 'https://api.twitch.tv/kraken/games/top?limit=50',
 		headers: {
 			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 		},
@@ -40,7 +40,7 @@ export default class MainLayout extends React.Component {
 
 	$.ajax({
 		type: 'GET',
-		url: 'https://api.twitch.tv/kraken/streams?limit=20',
+		url: 'https://api.twitch.tv/kraken/streams?limit=50',
 		headers: {
 			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 		},
