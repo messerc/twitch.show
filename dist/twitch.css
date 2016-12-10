@@ -9,7 +9,6 @@
 }
 
 .gamestable {
-	margin-left: 40px;
 	margin-top: 40px;
 }
 
@@ -18,34 +17,33 @@ td {
 	border-bottom: 1px solid rgb(75, 75, 75);
 }
 
-tr:hover > td {
+tr.main:hover > td {
 	background-color: #49515A;
-	cursor: pointer;
 }
 
 .custom-navbar {
 	text-align: center;	
 }
 
-ul {
+ul.selector {
 	margin-top: 30px;
 	margin-right: 40px;
 }
 
-li {
+li.selector {
 	display: inline;
 	float: center;
 	padding: 20px;
 	border-top: 1px solid rgb(75, 75, 75);
 	border-bottom: 1px solid rgb(75, 75, 75);
-	cursor: pointer;
 }
 
 a, a:hover {
 	text-decoration: none;
+	cursor: pointer;
 }
 
-li:hover {
+li.selector:hover {
 	background-color: rgb(55, 61, 66);
 }
 
@@ -55,4 +53,49 @@ li:hover {
 
 table {
 	table-layout: fixed;
+}
+
+img.small {
+	border: 1px solid rgb(55, 61, 66);
+	height: 60px;
+	position: center;
+
+}
+
+img {
+	border: 1px solid rgb(55, 61, 66);
+	height: 100px;
+}
+
+.bottom-border {
+	border-bottom: 1px solid rgb(55, 61, 66);
+	position: center;
+}
+
+.right {
+	align-content: right;
+}
+
+h6 {
+	max-width: 200px;
+}
+
+li.pic {
+	display: inline-block;
+	padding: 5px;
+	margin-top: 20px;
+	vertical-align: middle;
+}
+
+li.gamestats {
+	margin-top: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 5px;
+	border-bottom: 0px solid rgb(55, 61, 66);
+}
+
+.gamestat {
+	vertical-align: middle;
+	border: none;
 }

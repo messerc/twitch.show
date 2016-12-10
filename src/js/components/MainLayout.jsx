@@ -57,18 +57,18 @@ export default class MainLayout extends React.Component {
 			<div className="container-fluid">
 				<Header summary={this.state.summary} />
 					<div className="custom-navbar">
-						<ul>
-							<Link to="/"><li>Games</li></Link>
-	  						<Link to="streamers"><li>Streamers</li></Link>
+						<ul className="selector">
+							<Link to="/"><li className="selector">Games</li></Link>
+	  						<Link to="streamers"><li className="selector">Streamers</li></Link>
 	  					</ul>
   					</div>
 					<div className="row">
-						<div className="col-md-3">
+						<div className="col-md-2">
 						</div>
 
 						{React.cloneElement(this.props.children, { games: this.state.games, summary: this.state.summary, channels: this.state.channels })}
 
-						<div className="col-md-3">
+						<div className="col-md-2">
 						</div>
 					</div>
 			</div>

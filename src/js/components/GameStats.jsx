@@ -7,22 +7,29 @@ export default class GameStats extends React.Component {
 
 
 	render() {
-		const {game, viewers, summary} = this.props;
+		const {game, viewers, summary, streamers} = this.props;
 		const gameparam = encodeURIComponent(this.props.game);
-		const percentageOfTotal = Math.round(((this.props.viewers / this.props.summary.viewers) * 100) * 10) / 10 
+		const percentageOfTotalViewers = Math.round((this.props.viewers / this.props.summary.viewers) * 100) 
+		const percentageOfTotalStreamers = Math.round((this.props.streamers / this.props.summary.channels) * 100)
 		console.log(this.props.game);
 		return (
-		<tr>
-			<td>
+		<tr className="main">
+			<td style={{textAlign: "left"}}>
 				<Link to={ `game/${gameparam}` }>
 				{game}
 				</Link>
 			</td>
-			<td className="text-muted">
-			<strong>{viewers.toLocaleString()}</strong>
+			<td style={{textAlign: "left"}}>
+			{viewers.toLocaleString()}
 			</td>
-			<td>
-			{percentageOfTotal}%
+			<td className="text-muted">
+			{percentageOfTotalViewers}%
+			</td>
+			<td style={{textAlign: "left"}}>
+			{streamers.toLocaleString()}
+			</td>
+			<td className="text-muted">
+			{percentageOfTotalStreamers}%
 			</td>
 		</tr>
 

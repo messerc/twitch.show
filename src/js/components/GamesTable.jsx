@@ -10,18 +10,26 @@ export default class GamesTable extends React.Component {
 		const gameArray = this.props.games.top;
 
 		const gamesToRender = gameArray.map( (data, i) => 
-			<GameStats key={i} id={data.game._id} game={data.game.name} viewers={data.viewers} summary={this.props.summary} />
+			<GameStats key={i} 
+					   game={data.game.name} 
+					   viewers={data.viewers} 
+					   streamers={data.channels} 
+					   summary={this.props.summary}
+					   logo={data.game.box.medium}
+					   />
 			);
 
 
 		return (
-			<div className="container-fluid col-md-6 gamestable">
+			<div className="container-fluid col-md-8 gamestable">
 				<table className="table table-hover">
 					<thead>
 						<tr>
-							<th>game</th>
-							<th>viewers</th>
-							<th>% of twitch</th>
+							<th style={{width: "250px", textAlign: "left"}}>Game</th>
+							<th style={{textAlign: "left"}}>Viewers</th>
+							<th className="text-muted">% of all</th>
+							<th style={{textAlign: "left"}}>Streamers</th>
+							<th className="text-muted">% of all</th>
 						</tr>
 					</thead>
 					<tbody>

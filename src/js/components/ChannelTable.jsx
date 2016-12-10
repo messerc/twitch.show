@@ -14,20 +14,23 @@ export default class ChannelTable extends React.Component {
 						  game={data.channel.game} 
 						  viewers={data.viewers} 
 						  summary={this.props.summary}
-						  status={data.channel.status} />
+						  status={data.channel.status}
+						  logo={data.channel.logo} />
 			);
 
 
 		return (
 			console.log(channelArray),
-			<div className="container-fluid col-md-6 gamestable">
+			<div className="container-fluid col-md-8 gamestable">
 				<table className="table table-hover">
 					<thead>
 						<tr>
+							<th>
+							</th>
 							<th>streamer</th>
-							<th>title</th>
 							<th>viewers</th>
 							<th>% of twitch</th>
+							<th>title</th>
 						</tr>
 					</thead>
 					<tbody>

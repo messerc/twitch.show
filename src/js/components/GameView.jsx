@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { Link } from 'react-router';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
+import GamesChart from './GamesChart.jsx';
+
 
 export default class GameView extends React.Component {
 	constructor(props) {
@@ -19,12 +21,26 @@ export default class GameView extends React.Component {
 			headers: {
 				'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 			},
-			success: (data) => this.setState({
-				game: data.streams
-			})
+			success: (data) => {
+				console.log(data);
+				let gameStreamers = [];
+				for (let i=0; i < data["streams"].length; i++) {
+					gameStreamers.push({
+						game: data["streams"][i].game,
+						streamer: data["streams"][i]["channel"].display_name,
+						viewers: data["streams"][i].viewers,
+						title: data["streams"][i]["channel"].status,
+						banner: data["streams"][i]["channel"].logo,
+						url: data["streams"][i]["channel"].url
+					});
+				}
+				this.setState({
+					game: gameStreamers
+				})
+			}
+			})	
 		
-			});
-	};
+			};
 
 
 	componentDidMount() {
@@ -35,36 +51,37 @@ export default class GameView extends React.Component {
 				})
 			}
 		}
-
-
 	}
-
-			
 
 
 	render() {
 		if (this.state.game && this.state.gamesummary) {
-		console.log(this.state.game);
-		console.log(this.state.gamesummary);
 			return (
-				<div className="container-fluid col-md-6 gamestable">
-					<ResponsiveContainer height={600}>
-					  <BarChart data={this.state.game}
-					            margin={{top: 5, right: 30, left: 5, bottom: 5}}
-					            layout="vertical">
-					    <XAxis dataKey="viewers" type="number" axisLine={false} tickLine={false} tick={false} />
-					    <YAxis type="category" dataKey="game" tickLine={false} tick={{fill: 'rgb(255, 255, 255)'}} />
-					    <Tooltip wrapperStyle={{background: '#333'}} itemStyle={{background: '#333'}} labelStyle={{background: '#333'}} cursor={{fill: '#333'}}/>
-					    <Bar dataKey="viewers" fill="black" />
-					  </BarChart>
-					</ResponsiveContainer>
-				</div>
+		<div className="container col-md-8">
+			<table className="table gamestat" style={{marginTop: "50px"}}>
+				<tbody>
+					<tr>
+						<td style={{textAlign: "right"}}>
+						<img src={this.state.gamesummary.game.box.medium}  />
+						</td>
+						<td>
+						<h5><strong>{this.state.gamesummary.game.name}</strong></h5>
+						<h5>{this.state.gamesummary.viewers.toLocaleString()} <span className="text-muted">viewers</span></h5>
+						<h5>{this.state.gamesummary.channels.toLocaleString()} <span className="text-muted">streamers</span></h5>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			
+				<GamesChart data={this.state.game} summary={this.state.gamesummary} />
+			</div>
 				)
-			}	
-		else {
+		} 
 			return (
 			<div></div>
 			)
+			
 		}
 	}
-}
