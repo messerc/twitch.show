@@ -1,7 +1,5 @@
 .starter {
 	margin-top: 50px;
-	position: center;
-	text-align: center;
 }
 
 .largefont {
@@ -15,6 +13,10 @@
 td {
 	background-color: #272b30;
 	border-bottom: 1px solid rgb(75, 75, 75);
+}
+
+td.small {
+	width: 30px;
 }
 
 tr.main:hover > td {
@@ -57,7 +59,7 @@ table {
 
 img.small {
 	border: 1px solid rgb(55, 61, 66);
-	height: 60px;
+	height: 70px;
 	position: center;
 
 }
