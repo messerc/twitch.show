@@ -12,15 +12,14 @@ export default class GameStats extends React.Component {
 		const gameparam = encodeURIComponent(game);
 		const percentageOfTotalViewers = Math.round((viewers / summary.viewers) * 100) 
 		const percentageOfTotalStreamers = Math.round((streamers / summary.channels) * 100)
-
 		return (
 			<tr className="main">
-				<td>
-				<img className="small" src={logo} />
+				<td style={{width: "100px"}}>
+				<Link to={ `game/${gameparam}` }> <img className="small" src={logo} /> </Link>
 				</td>
 				<td style={{textAlign: "left"}}>
 					<Link to={ `game/${gameparam}` }>
-					{game}
+				{game}
 					</Link>
 				</td>
 				<td>
@@ -28,6 +27,12 @@ export default class GameStats extends React.Component {
 				</td>
 				<td>
 				{percentageOfTotalViewers}%
+				</td>
+				<td>
+				{streamers.toLocaleString()}
+				</td>
+				<td>
+				{percentageOfTotalStreamers}%
 				</td>
 			</tr>
 			)

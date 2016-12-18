@@ -32,7 +32,7 @@ class CustomizedLabel extends React.Component {
 	const percentageOfTotal = Math.round((payload.viewers / summary.viewers) * 100).toLocaleString();
     return	(
      <text x={x} y={y} dx={15} 
-    			 fontSize={12} 
+    			 fontSize={14} 
     			 fill = "rgb(255, 255, 255)"
     			 textAnchor="middle">{percentageOfTotal}%
     	   </text>
@@ -50,12 +50,12 @@ export default class GamesChart extends React.Component {
 			<div className="row">
 				<ResponsiveContainer height={600}>
 				  <BarChart data={data}
-				            margin={{top: 5, right: 30, left: 80, bottom: 5}}
+				            margin={{top: 50, right: 30, left: 80, bottom: 5}}
 				            layout="vertical">
 				    <XAxis dataKey="viewers" type="number" axisLine={false} tickLine={false} tick={false} />
 				    <YAxis type="category" dataKey="streamer" tickLine={false} tick={{fill: 'rgb(255, 255, 255)'}} />
 				    <Tooltip content={<CustomizedToolTip summary={this.props.summary}/>}  itemStyle={{background: '#333'}} cursor={{fill: '#333'}} />
-				    <Bar dataKey="viewers" fill="rgb(55, 61, 66)" label={<CustomizedLabel summary={this.props.summary}/>} />
+				    <Bar dataKey="viewers" fill="rgb(55, 61, 66)" label={<CustomizedLabel summary={this.props.summary}/>} isAnimationActive={false} />
 				  </BarChart>
 				</ResponsiveContainer>
 			</div>

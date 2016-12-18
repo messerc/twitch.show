@@ -3,49 +3,34 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { Link } from 'react-router';
 
+
 import Header from './Header.jsx';
 import GamesTable from './GamesTable.jsx';
 import ChannelTable from './ChannelTable.jsx';
 import GameView from './GameView.jsx';
 import MainLineChart from './MainLineChart.jsx';
 
-var historicSummaryData = [];
-var historicGameData = [];
 
 
 export default class MainLayout extends React.Component {
 	constructor(props) {
 	super(props);
 
-	this.state = {summary: null, games: null, channels: null, historicSummary: null, historicGame: null};
-	this.pushHistoricGameData = this.pushHistoricGameData.bind(this);
+	this.state = { summary: null, games: null, channels: null, historicSummary: [], secondcounter: 0, minutecounter: 0 }
+	this.fetchTwitchData = this.fetchTwitchData.bind(this);
 	this.pushHistoricSummaryData = this.pushHistoricSummaryData.bind(this);
-	this.getSummaryData = this.getSummaryData.bind(this);
-	this.getGameData = this.getGameData.bind(this);
-	//rip the ajax calls to set initial state
-
-
-	$.ajax({
-		type: 'GET',
-		url: 'https://api.twitch.tv/kraken/streams?limit=20',
-		headers: {
-			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
-		},
-		success: (data) => this.setState({channels: data})
-		});
+	this.counter = this.counter.bind(this);
 	}
 
 	componentDidMount() {
-		this.getSummaryData();
-		this.getGameData();
-		setInterval(this.getGameData, 5000);
-		setInterval(this.getSummaryData, 5000);
+		this.fetchTwitchData();
+		setInterval(this.counter, 1000);
+		setInterval(this.fetchTwitchData, 5000);
 		setInterval(this.pushHistoricSummaryData, 5000);
-		setInterval(this.pushHistoricGameData, 5000);
 	}
 
 
-	getGameData() {
+	fetchTwitchData() {
 	$.ajax({
 		type: 'GET',
 		url: 'https://api.twitch.tv/kraken/games/top?limit=20',
@@ -54,9 +39,14 @@ export default class MainLayout extends React.Component {
 		},
 		success: (data) => this.setState({games: data})
 		});
-	}
-
-	getSummaryData() {
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.twitch.tv/kraken/streams?limit=20',
+		headers: {
+			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
+		},
+		success: (data) => this.setState({channels: data})
+		});
 	$.ajax({
 		type: 'GET',
 		url: 'https://api.twitch.tv/kraken/streams/summary',
@@ -67,18 +57,18 @@ export default class MainLayout extends React.Component {
 		});
 	}
 
-	pushHistoricGameData() {
-		historicGameData.push(this.state.games);
-		this.setState({
-			historicGame: historicGameData
-		})
+	counter() {
+		this.setState( (prevState) => ({ secondcounter: prevState.secondcounter + 1 }) )
+		if (this.state.secondcounter > 59) {
+			this.setState({ secondcounter: 0 })
+			this.setState( (prevState) => ({ minutecounter: prevState.minutecounter + 1}) )
+		}
 	}
 
+
 	pushHistoricSummaryData() {
-		historicSummaryData.push(this.state.summary);
-		this.setState({
-			historicSummary: historicSummaryData
-		})
+		const date = new Date();
+		this.setState({historicSummary: this.state.historicSummary.concat([{"viewers": this.state.summary.viewers, "date": date.toLocaleTimeString()}])})
 	}
 
 	render() {
@@ -87,7 +77,7 @@ export default class MainLayout extends React.Component {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-md-2 col-md-offset-2">
-						<Header summary={this.state.summary} />
+						<Header summary={this.state.summary} secondcounter={this.state.secondcounter} minutecounter={this.state.minutecounter} />
 					</div>
 					<div className="col-md-6">
 						<MainLineChart data={this.state.historicSummary} />

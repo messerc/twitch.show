@@ -7,8 +7,7 @@ export default class ChannelStats extends React.Component {
 
 	render() {
 		const {channels, game, viewers, summary, status, logo} = this.props;
-		const percentageOfTotal = Math.round(((this.props.viewers / this.props.summary.viewers) * 100) * 10) / 10; 
-		console.log(game);
+		const percentageOfTotal = Math.round(((viewers / summary.viewers) * 100) * 10) / 10; 
 		return (
 			<tr className="main">
 				<td>

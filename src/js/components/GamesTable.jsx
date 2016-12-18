@@ -21,18 +21,21 @@ export default class GamesTable extends React.Component {
 		return (
 			<div className="container-fluid col-md-8 gamestable">
 				<table className="table table-hover">
+					<thead>
+					<tr>
+						<th></th>
+						<th style={{width: "200px", textAlign: "left"}}>Game</th>
+						<th>Viewers</th>
+						<th style={{textAlign: "left"}}>% of twitch</th>
+						<th>Streamers</th>
+						<th>% of twitch</th>
+					</tr>
+					</thead>
 					<tbody>
-						<tr>
-							<th style={{width: "70px", textAlign: "left"}}></th>
-							<th style={{width: "150px", textAlign: "left"}}>Game</th>
-							<th className="text-muted">Viewers</th>
-							<th style={{textAlign: "left"}}>Streamers</th>
-							<th className="text-muted"></th>
-						</tr>
 						{gamesToRender}
 					</tbody>
 				</table>
 			</div>
 			)
 	}
-}
+} 

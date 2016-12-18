@@ -20,7 +20,6 @@ export default class ChannelTable extends React.Component {
 
 
 		return (
-			console.log(channelArray),
 			<div className="container-fluid col-md-8 gamestable">
 				<table className="table table-hover">
 					<thead>
