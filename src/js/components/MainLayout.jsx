@@ -63,8 +63,9 @@ export default class MainLayout extends React.Component {
 		})
 		}
 		else {
+		let newHistoricArray = this.state.historicSummary.shift();
 			this.setState({
-				historicSummary: []
+				historicSummary: newHistoricArray.concat([{"viewers": this.state.summary.viewers, "date": date.toLocaleTimeString()}])
 			})
 		}
 	}

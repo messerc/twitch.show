@@ -36752,8 +36752,9 @@
 						historicSummary: this.state.historicSummary.concat([{ "viewers": this.state.summary.viewers, "date": date.toLocaleTimeString() }])
 					});
 				} else {
+					var newHistoricArray = this.state.historicSummary.shift();
 					this.setState({
-						historicSummary: []
+						historicSummary: newHistoricArray.concat([{ "viewers": this.state.summary.viewers, "date": date.toLocaleTimeString() }])
 					});
 				}
 			}
