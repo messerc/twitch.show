@@ -45,7 +45,6 @@ export default class GamesChart extends React.Component {
 		
 	render() {
 		const { data } = this.props;
-		console.log(data);
 		return(
 			<div className="row">
 				<ResponsiveContainer height={600}>

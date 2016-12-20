@@ -39,7 +39,6 @@ export default class GameView extends React.Component {
 			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 		},
 		success: (data) => {
-			console.log(data);
 			let gameStreamers = [];
 			for (let i=0; i < data["streams"].length; i++) {
 				gameStreamers.push({
