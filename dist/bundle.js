@@ -36747,7 +36747,15 @@
 			key: 'pushHistoricSummaryData',
 			value: function pushHistoricSummaryData() {
 				var date = new Date();
-				this.setState({ historicSummary: this.state.historicSummary.concat([{ "viewers": this.state.summary.viewers, "date": date.toLocaleTimeString() }]) });
+				if (this.state.historicSummary.length < 800) {
+					this.setState({
+						historicSummary: this.state.historicSummary.concat([{ "viewers": this.state.summary.viewers, "date": date.toLocaleTimeString() }])
+					});
+				} else {
+					this.setState({
+						historicSummary: []
+					});
+				}
 			}
 		}, {
 			key: 'render',
@@ -71861,7 +71869,6 @@
 						'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 					},
 					success: function success(data) {
-						console.log(data);
 						var gameStreamers = [];
 						for (var i = 0; i < data["streams"].length; i++) {
 							gameStreamers.push({
@@ -72117,7 +72124,6 @@
 			value: function render() {
 				var data = this.props.data;
 
-				console.log(data);
 				return _react2.default.createElement(
 					'div',
 					{ className: 'row' },
