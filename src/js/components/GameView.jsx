@@ -21,9 +21,15 @@ export default class GameView extends React.Component {
 	componentDidMount() {
 		this.getGameData();
 		this.getGameSummaryData();
-		setInterval(this.getGameData, 5000);
-		setInterval(this.getGameSummaryData, 5000);
+		this.gameTimerId = setInterval(this.getGameData, 5000);
+		this.summaryTimerId = setInterval(this.getGameSummaryData, 5000);
 	}
+
+	componentWillUnmount() {
+		clearInterval(this.gameTimerId);
+		clearInterval(this.summaryTimerId);
+	}
+
 
 	getGameData() {
 		$.ajax({
