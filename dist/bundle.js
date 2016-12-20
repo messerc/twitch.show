@@ -72121,6 +72121,11 @@
 		}
 
 		_createClass(GamesChart, [{
+			key: 'handleClick',
+			value: function handleClick(e) {
+				window.location.assign(e.url);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var data = this.props.data;
@@ -72139,7 +72144,7 @@
 							_react2.default.createElement(_recharts.XAxis, { dataKey: 'viewers', type: 'number', axisLine: false, tickLine: false, tick: false }),
 							_react2.default.createElement(_recharts.YAxis, { type: 'category', dataKey: 'streamer', tickLine: false, tick: { fill: 'rgb(255, 255, 255)' } }),
 							_react2.default.createElement(_recharts.Tooltip, { content: _react2.default.createElement(CustomizedToolTip, { summary: this.props.summary }), itemStyle: { background: '#333' }, cursor: { fill: '#333' } }),
-							_react2.default.createElement(_recharts.Bar, { dataKey: 'viewers', fill: 'rgb(55, 61, 66)', label: _react2.default.createElement(CustomizedLabel, { summary: this.props.summary }), isAnimationActive: false })
+							_react2.default.createElement(_recharts.Bar, { onClick: this.handleClick.bind(this), dataKey: 'viewers', fill: 'rgb(55, 61, 66)', label: _react2.default.createElement(CustomizedLabel, { summary: this.props.summary }), isAnimationActive: false })
 						)
 					)
 				);
