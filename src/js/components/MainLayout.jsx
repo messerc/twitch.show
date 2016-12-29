@@ -54,11 +54,19 @@ export default class MainLayout extends React.Component {
 		});
 	}
 
-
-
 	pushHistoricSummaryData() {
 		const date = new Date();
-		this.setState({historicSummary: this.state.historicSummary.concat([{"viewers": this.state.summary.viewers, "date": date.toLocaleTimeString()}])})
+		if (this.state.historicSummary.length < 800) {
+			this.setState({
+				historicSummary: this.state.historicSummary.concat([{"viewers": this.state.summary.viewers, "date": date.toLocaleTimeString()}])
+		})
+		}
+		else {
+		let newHistoricArray = this.state.historicSummary.shift();
+			this.setState({
+				historicSummary: newHistoricArray.concat([{"viewers": this.state.summary.viewers, "date": date.toLocaleTimeString()}])
+			})
+		}
 	}
 
 	render() {

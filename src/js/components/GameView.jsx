@@ -21,9 +21,15 @@ export default class GameView extends React.Component {
 	componentDidMount() {
 		this.getGameData();
 		this.getGameSummaryData();
-		setInterval(this.getGameData, 10000);
-		setInterval(this.getGameSummaryData, 10000);
+		this.gameTimerId = setInterval(this.getGameData, 5000);
+		this.summaryTimerId = setInterval(this.getGameSummaryData, 5000);
 	}
+
+	componentWillUnmount() {
+		clearInterval(this.gameTimerId);
+		clearInterval(this.summaryTimerId);
+	}
+
 
 	getGameData() {
 		$.ajax({
@@ -33,7 +39,6 @@ export default class GameView extends React.Component {
 			'Client-ID': 'pj2b42m1aep7izzdkwq9tiefgdao63u'
 		},
 		success: (data) => {
-			console.log(data);
 			let gameStreamers = [];
 			for (let i=0; i < data["streams"].length; i++) {
 				gameStreamers.push({

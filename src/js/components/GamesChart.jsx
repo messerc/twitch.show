@@ -42,10 +42,13 @@ class CustomizedLabel extends React.Component {
 
 
 export default class GamesChart extends React.Component {
+
+	handleClick(e) {
+		window.location.assign(e.url)
+	}
 		
 	render() {
 		const { data } = this.props;
-		console.log(data);
 		return(
 			<div className="row">
 				<ResponsiveContainer height={600}>
@@ -55,7 +58,7 @@ export default class GamesChart extends React.Component {
 				    <XAxis dataKey="viewers" type="number" axisLine={false} tickLine={false} tick={false} />
 				    <YAxis type="category" dataKey="streamer" tickLine={false} tick={{fill: 'rgb(255, 255, 255)'}} />
 				    <Tooltip content={<CustomizedToolTip summary={this.props.summary}/>}  itemStyle={{background: '#333'}} cursor={{fill: '#333'}} />
-				    <Bar dataKey="viewers" fill="rgb(55, 61, 66)" label={<CustomizedLabel summary={this.props.summary}/>} isAnimationActive={false} />
+				    <Bar onClick={this.handleClick.bind(this)} dataKey="viewers" fill="rgb(55, 61, 66)" label={<CustomizedLabel summary={this.props.summary} />} isAnimationActive={false} />
 				  </BarChart>
 				</ResponsiveContainer>
 			</div>
