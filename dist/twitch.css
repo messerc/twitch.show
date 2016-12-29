@@ -2,6 +2,45 @@
 	margin-top: 50px;
 }
 
+#gamename {
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	vertical-align: center;
+
+}
+
+
+
+h4 {
+	margin: 0px;
+}
+
+h6 {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.gamecard {
+	transition: all 0.1s;
+}
+
+.gamecard:hover {
+	opacity: 0.7;
+	transform: scale(1.01);
+}
+
+.gamecard:hover #gamename {
+	display: block;
+	opacity: 1;
+}
+
+
 
 .largefont {
 	font-size: 48px;
@@ -58,17 +97,8 @@ table {
 	table-layout: fixed;
 }
 
-img.small {
-	border: 1px solid rgb(55, 61, 66);
-	height: 70px;
-	position: center;
 
-}
 
-img {
-	border: 1px solid rgb(55, 61, 66);
-	height: 100px;
-}
 
 .bottom-border {
 	border-bottom: 1px solid rgb(55, 61, 66);

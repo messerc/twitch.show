@@ -16,19 +16,16 @@ export default class MainLayout extends React.Component {
 	constructor(props) {
 	super(props);
 
-	this.state = { summary: null, games: null, channels: null, historicSummary: [], secondcounter: 0, minutecounter: 0 }
+	this.state = { summary: null, games: null, channels: null, historicSummary: [] }
 	this.fetchTwitchData = this.fetchTwitchData.bind(this);
 	this.pushHistoricSummaryData = this.pushHistoricSummaryData.bind(this);
-	this.counter = this.counter.bind(this);
 	}
 
 	componentDidMount() {
 		this.fetchTwitchData();
-		setInterval(this.counter, 1000);
 		setInterval(this.fetchTwitchData, 5000);
 		setInterval(this.pushHistoricSummaryData, 5000);
 	}
-
 
 	fetchTwitchData() {
 	$.ajax({
@@ -57,13 +54,6 @@ export default class MainLayout extends React.Component {
 		});
 	}
 
-	counter() {
-		this.setState( (prevState) => ({ secondcounter: prevState.secondcounter + 1 }) )
-		if (this.state.secondcounter > 59) {
-			this.setState({ secondcounter: 0 })
-			this.setState( (prevState) => ({ minutecounter: prevState.minutecounter + 1}) )
-		}
-	}
 
 
 	pushHistoricSummaryData() {
@@ -77,7 +67,7 @@ export default class MainLayout extends React.Component {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-md-2 col-md-offset-2">
-						<Header summary={this.state.summary} secondcounter={this.state.secondcounter} minutecounter={this.state.minutecounter} />
+						<Header summary={this.state.summary} />
 					</div>
 					<div className="col-md-6">
 						<MainLineChart data={this.state.historicSummary} />

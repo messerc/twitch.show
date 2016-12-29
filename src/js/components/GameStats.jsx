@@ -13,28 +13,18 @@ export default class GameStats extends React.Component {
 		const percentageOfTotalViewers = Math.round((viewers / summary.viewers) * 100) 
 		const percentageOfTotalStreamers = Math.round((streamers / summary.channels) * 100)
 		return (
-			<tr className="main">
-				<td style={{width: "100px"}}>
-				<Link to={ `game/${gameparam}` }> <img className="small" src={logo} /> </Link>
-				</td>
-				<td style={{textAlign: "left"}}>
-					<Link to={ `game/${gameparam}` }>
-				{game}
-					</Link>
-				</td>
-				<td>
-				{viewers.toLocaleString()}
-				</td>
-				<td>
-				{percentageOfTotalViewers}%
-				</td>
-				<td>
-				{streamers.toLocaleString()}
-				</td>
-				<td>
-				{percentageOfTotalStreamers}%
-				</td>
-			</tr>
+			<Link to={ `game/${gameparam}` }>
+				<div className="col-lg-3 col-sm-6 col-xs-12 well well-sm gamecard">
+					<div className="col-xs-6 mute">
+						<img src={logo} />
+					</div>
+					<div className="col-xs-6 mute">
+						<h3><strong>{viewers.toLocaleString()}</strong></h3><h6 className="text-muted">watching</h6>
+						<h3><strong>{percentageOfTotalViewers}%</strong></h3><h6 className="text-muted"> of twitch</h6>
+					</div>
+				</div>
+
+			</Link>
 			)
 	}	
 }
