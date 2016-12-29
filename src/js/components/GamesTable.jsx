@@ -9,6 +9,7 @@ export default class GamesTable extends React.Component {
 		const gameArray = this.props.games.top;
 		const gamesToRender = gameArray.map( (data, i) => 
 			<GameStats key={i} 
+				       rank={i+1}
 					   game={data.game.name} 
 					   viewers={data.viewers} 
 					   streamers={data.channels} 
