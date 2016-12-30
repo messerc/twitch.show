@@ -9,6 +9,7 @@ import GamesTable from './GamesTable.jsx';
 import ChannelTable from './ChannelTable.jsx';
 import GameView from './GameView.jsx';
 import MainLineChart from './MainLineChart.jsx';
+import ScatterPlot from './ScatterPlot.jsx';
 
 
 
@@ -87,6 +88,7 @@ export default class MainLayout extends React.Component {
 						<ul className="selector">
 							<Link to="/"><li className="selector">Games</li></Link>
 	  						<Link to="streamers"><li className="selector">Streamers</li></Link>
+	  						<Link to="scatter"><li className="selector">Scatter</li></Link>
 	  					</ul>
   					</div>
 					<div className="row">
