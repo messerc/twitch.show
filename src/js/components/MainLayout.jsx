@@ -14,14 +14,17 @@ import ScatterPlot from './ScatterPlot.jsx';
 
 
 
+
 export default class MainLayout extends React.Component {
 	constructor(props) {
 	super(props);
+
 
 	this.state = { summary: null, games: null, channels: null, historicSummary: [] }
 	this.fetchTwitchData = this.fetchTwitchData.bind(this);
 	this.pushHistoricSummaryData = this.pushHistoricSummaryData.bind(this);
 	}
+
 
 	componentDidMount() {
 		this.fetchTwitchData();
@@ -75,11 +78,11 @@ export default class MainLayout extends React.Component {
 		if(this.state.summary && this.state.games && this.state.channels) {
 		return (
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-md-2 col-md-offset-2">
+				<div className="row">					
+					<div className="col-md-2 col-md-offset-2 col-xs-6 col-xs-offset-2">
 						<Header summary={this.state.summary} />
 					</div>
-					<div className="col-md-6">
+					<div className="col-md-6 col-xs-12">
 						<MainLineChart data={this.state.historicSummary} />
 					</div>
 					<div className="col-md-2">

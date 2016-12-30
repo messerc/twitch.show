@@ -26,7 +26,7 @@ h6 {
 }
 
 img {
-	max-height: 150px;
+	max-height: 125px;
 	max-width: 100%;
 	display: inline-block;
 	vertical-align: middle;
@@ -44,13 +44,29 @@ img {
 	transform: scale(1.02);
 }
 
-.navcard {
+.nav {
+	vertical-align: middle;
+	text-align: center;
+}
+
+a > .navcard {
+	padding: 10px;
+	border-bottom: 1px solid rgba(65, 65, 65, 0.7);
+	transition: all 0.3s;
+}
+
+a.active > .navcard {
+	border-bottom: 1px solid rgba(165, 210, 95, 0.6);
+}
+
+.true {
+	padding: 5px;
+	border-bottom: 1px solid red;
 	transition: all 0.1s;
 }
 
 .navcard:hover {
-	opacity: 0.8;
-	transform: scale(1.02);
+	border-bottom: 1px solid rgba(165, 210, 95, 0.4);
 }
 
 .gamecard:hover #gamename {
@@ -70,42 +86,6 @@ img {
 	margin-top: 40px;
 }
 
-td {
-	background-color: #272b30;
-	border-bottom: 1px solid rgb(75, 75, 75);
-}
-
-
-td.small {
-	width: 30px;
-}
-
-tr.main:hover > td {
-	background-color: #49515A;
-}
-
-
-hr.navline {
-	padding-top: 15px;
-	margin-left: 5%;
-	width: 90%;
-	border-top: 0px;
-	border-bottom: 1px solid rgba(165, 210, 95, 0.6);
-}
-
-ul.selector {
-	margin-top: 30px;
-	margin-right: 40px;
-}
-
-li.selector {
-	display: inline;
-	float: center;
-	padding: 20px;
-	border-top: 1px solid rgb(75, 75, 75);
-	border-bottom: 1px solid rgb(75, 75, 75);
-}
-
 a, a:hover {
 	text-decoration: none;
 	cursor: pointer;
@@ -119,13 +99,6 @@ li.selector:hover {
 	font-size: 12px;
 }
 
-table {
-	table-layout: fixed;
-}
-
-
-
-
 .bottom-border {
 	border-bottom: 1px solid rgb(55, 61, 66);
 	position: center;
@@ -137,13 +110,6 @@ table {
 
 h6 {
 	max-width: 200px;
-}
-
-li.pic {
-	display: inline-block;
-	padding: 5px;
-	margin-top: 20px;
-	vertical-align: middle;
 }
 
 li.gamestats {
@@ -163,7 +129,3 @@ li.gamestats {
 	vertical-align: middle;
 }
 
-.nav {
-	vertical-align: middle;
-	text-align: left;
-}

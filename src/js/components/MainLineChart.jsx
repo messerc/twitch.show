@@ -29,15 +29,15 @@ export default class MainLineChart extends React.Component {
 		return (
 			<div className="chart">
 			<ResponsiveContainer height={240}>
-				<AreaChart data={data} margin={{ top: 75, right: 40, left: 30, bottom: 5 }}>
+				<AreaChart data={data} margin={{ top: 75, right: 30, left: 0, bottom: 5 }}>
 					<defs>
 					   <linearGradient id="chartcolor" x1="0" y1="0" x2="0" y2="1">
 					     <stop offset="5%" stopColor="rgb(75, 75, 75)" stopOpacity={1}/>
 					     <stop offset="95%" stopColor="rgb(75, 75, 75)" stopOpacity={0.4}/>
 					   </linearGradient>
 					</defs>
-					  <XAxis label="time" dataKey="viewers" tickLine={false} tick={false}/>
-					  <YAxis label="viewers" type="number" tickLine={false} tick={false} domain={['dataMin - 500', 'dataMax + 500']} />
+					  <XAxis label="time" dataKey="viewers" tickLine={false} tick={false} />
+					  <YAxis label="viewers" type="number" tickLine={false} tick={false}  domain={['dataMin - 500', 'dataMax + 500']} />
 					  <Area type="monotone" 
 					  dataKey="viewers" 
 					  stroke="rgb(200, 170, 200)" 

@@ -10,7 +10,6 @@ import GameView from './components/GameView.jsx';
 import ChannelTable from './components/ChannelTable.jsx';
 import ScatterPlot from './components/ScatterPlot.jsx';
 
-
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={MainLayout}>
