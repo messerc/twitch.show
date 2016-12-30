@@ -8,8 +8,9 @@ export default class ChannelTable extends React.Component {
 	render() {
 		const channelArray = this.props.channels.streams;
 
-		const channelsToRender = channelArray.map((data) => 
+		const channelsToRender = channelArray.map((data, i) => 
 			<ChannelStats key={data._id} 
+						  rank={i+1}
 						  channels={data.channel.display_name} 
 						  game={data.channel.game} 
 						  viewers={data.viewers} 
@@ -21,21 +22,7 @@ export default class ChannelTable extends React.Component {
 
 		return (
 			<div className="container-fluid col-md-8 gamestable">
-				<table className="table table-hover">
-					<thead>
-						<tr>
-							<th>
-							</th>
-							<th>streamer</th>
-							<th>viewers</th>
-							<th>% of twitch</th>
-							<th>title</th>
-						</tr>
-					</thead>
-					<tbody>
-						{channelsToRender}
-					</tbody>
-				</table>
+				{channelsToRender}
 			</div>
 			)
 	}
