@@ -7,7 +7,7 @@ export default class NavBar extends React.Component {
 	render() {
 		return (
 		<div>
-			<Link to="/">
+			<Link to="/" activeClassName="active">
 				<div className='col-lg-2 col-lg-offset-0 col-md-10 col-md-offset-1 navcard'>
 					<div className="col-xs-4">
 				   		<i className="fa fa-gamepad fa-2x icon" aria-hidden="true"></i>
