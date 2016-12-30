@@ -44,6 +44,15 @@ img {
 	transform: scale(1.02);
 }
 
+.navcard {
+	transition: all 0.1s;
+}
+
+.navcard:hover {
+	opacity: 0.8;
+	transform: scale(1.02);
+}
+
 .gamecard:hover #gamename {
 	opacity: 1;
 }
@@ -63,6 +72,7 @@ td {
 	border-bottom: 1px solid rgb(75, 75, 75);
 }
 
+
 td.small {
 	width: 30px;
 }
@@ -71,8 +81,13 @@ tr.main:hover > td {
 	background-color: #49515A;
 }
 
-.custom-navbar {
-	text-align: center;	
+
+hr.navline {
+	padding-top: 15px;
+	margin-left: 5%;
+	width: 90%;
+	border-top: 0px;
+	border-bottom: 1px solid rgba(165, 210, 95, 0.6);
 }
 
 ul.selector {
@@ -139,4 +154,13 @@ li.gamestats {
 .gamestat {
 	vertical-align: middle;
 	border: none;
+}
+
+.icon {
+	vertical-align: middle;
+}
+
+.nav {
+	vertical-align: middle;
+	text-align: left;
 }

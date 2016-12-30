@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { Link } from 'react-router';
 
-
-import Header from './Header.jsx';
-import GamesTable from './GamesTable.jsx';
 import ChannelTable from './ChannelTable.jsx';
+import GamesTable from './GamesTable.jsx';
 import GameView from './GameView.jsx';
+import Header from './Header.jsx';
 import MainLineChart from './MainLineChart.jsx';
+import NavBar from './NavBar.jsx';
 import ScatterPlot from './ScatterPlot.jsx';
+
 
 
 
@@ -84,12 +85,10 @@ export default class MainLayout extends React.Component {
 					<div className="col-md-2">
 					</div>
 				</div>
-					<div className="custom-navbar">
-						<ul className="selector">
-							<Link to="/"><li className="selector">Games</li></Link>
-	  						<Link to="streamers"><li className="selector">Streamers</li></Link>
-	  						<Link to="scatter"><li className="selector">Scatter</li></Link>
-	  					</ul>
+					<div className="row">
+						<div className="col-md-8 col-md-offset-2">
+							<NavBar />
+						</div>
   					</div>
 					<div className="row">
 						<div className="col-md-2">

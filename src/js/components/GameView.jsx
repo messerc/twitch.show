@@ -71,17 +71,15 @@ export default class GameView extends React.Component {
 	render() {
 		if (this.state.game && this.state.gamesummary) {
 			const { summary } = this.props;
-			const { game, gamesummary } = this.state;
 			const percentageofTotalViewers = Math.round(((this.state.gamesummary.viewers / summary.viewers) * 100) * 10) / 10; 
 			const percentageofTotalStreamers = Math.round((this.state.gamesummary.channels / summary.channels) * 100);
-			const channelsToRender = game.map((data, i) => <GamesChart key={i} rank={i+1} data={data} summary={gamesummary} /> )
 			return (
-		<div className="container col-md-8" style={{marginTop: '50px'}}>
+		<div className="container col-md-8">
 			<h2>{this.state.gamesummary.game.name}</h2>
-				<div className="row"> 
-					{channelsToRender}
-				</div>
-		</div>
+			<h5>{this.state.gamesummary.viewers.toLocaleString()} <span className="text-muted">viewers  |  </span> {percentageofTotalViewers}% <span className="text-muted">of twitch</span> </h5>
+			<h5>{this.state.gamesummary.channels.toLocaleString()} <span className="text-muted">streamers  |  </span> {percentageofTotalStreamers}% <span className="text-muted">of twitch</span></h5>
+				<GamesChart data={this.state.game} summary={this.state.gamesummary} />
+			</div>
 				)
 		} 
 			return (

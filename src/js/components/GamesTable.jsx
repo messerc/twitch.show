@@ -20,7 +20,7 @@ export default class GamesTable extends React.Component {
 			);
 
 		return (
-			<div className="container-fluid col-md-8" style={{marginTop: '50px'}}>
+			<div className="container-fluid col-md-8" style={{marginTop: '20px'}}>
 				<div className="row"> 
 					{gamesToRender}
 				</div>
