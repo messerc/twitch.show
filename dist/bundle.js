@@ -37338,6 +37338,7 @@
 				    url = _props.url;
 
 				var percentageOfTotalViewers = Math.round(viewers / summary.viewers * 100 * 10) / 10;
+				var trimmedString = channels.length > 12 ? channels.substring(0, 12) + "..." : channels;
 				return _react2.default.createElement(
 					'div',
 					{ className: 'col-xl-2 col-xl-offset-1 col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard', onClick: function onClick() {
@@ -37348,7 +37349,7 @@
 						{ className: 'col-xs-6 frame' },
 						_react2.default.createElement('img', { src: logo }),
 						_react2.default.createElement('br', null),
-						channels,
+						trimmedString,
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'span',
@@ -72176,6 +72177,7 @@
 				    url = _props$data.url;
 
 				var percentageOfTotalViewers = Math.round(viewers / summary.viewers * 100);
+				var trimmedString = streamer.length > 12 ? streamer.substring(0, 12) + "..." : streamer;
 				return _react2.default.createElement(
 					'div',
 					{ className: 'col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard', onClick: function onClick() {
@@ -72186,7 +72188,7 @@
 						{ className: 'col-xs-6 frame' },
 						_react2.default.createElement('img', { src: banner }),
 						_react2.default.createElement('br', null),
-						streamer,
+						trimmedString,
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'span',
