@@ -28,8 +28,8 @@ export default class MainLineChart extends React.Component {
 		const { data } = this.props;
 		return (
 			<div className="chart">
-			<ResponsiveContainer height={240}>
-				<AreaChart data={data} margin={{ top: 75, right: 30, left: 0, bottom: 5 }}>
+			<ResponsiveContainer height={200}>
+				<AreaChart data={data} margin={{ top: 75, right: 60, left: 0, bottom: 5 }}>
 					<defs>
 					   <linearGradient id="chartcolor" x1="0" y1="0" x2="0" y2="1">
 					     <stop offset="5%" stopColor="rgb(75, 75, 75)" stopOpacity={1}/>

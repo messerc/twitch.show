@@ -37257,6 +37257,7 @@
 				var channelsToRender = channelArray.map(function (data, i) {
 					return _react2.default.createElement(_ChannelStats2.default, { key: data._id,
 						rank: i + 1,
+						url: data.channel.url,
 						channels: data.channel.display_name,
 						game: data.channel.game,
 						viewers: data.viewers,
@@ -37333,12 +37334,15 @@
 				    summary = _props.summary,
 				    status = _props.status,
 				    logo = _props.logo,
-				    rank = _props.rank;
+				    rank = _props.rank,
+				    url = _props.url;
 
 				var percentageOfTotalViewers = Math.round(viewers / summary.viewers * 100 * 10) / 10;
 				return _react2.default.createElement(
 					'div',
-					{ className: 'col-xl-2 col-xl-offset-1 col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard' },
+					{ className: 'col-xl-2 col-xl-offset-1 col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard', onClick: function onClick() {
+							return window.location.href = url;
+						} },
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-xs-6 frame' },
@@ -37389,7 +37393,15 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'well well-sm', id: 'gamename' },
-						status
+						'Game: ',
+						game,
+						' ',
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'span',
+							{ className: 'text-muted' },
+							status
+						)
 					)
 				);
 			}
@@ -72149,11 +72161,6 @@
 		}
 
 		_createClass(GamesChart, [{
-			key: 'handleClick',
-			value: function handleClick(e) {
-				window.location.assign(e.url);
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				var _props = this.props,
@@ -72171,7 +72178,9 @@
 				var percentageOfTotalViewers = Math.round(viewers / summary.viewers * 100);
 				return _react2.default.createElement(
 					'div',
-					{ className: 'col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard' },
+					{ className: 'col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard', onClick: function onClick() {
+							return window.location.href = url;
+						} },
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-xs-6 frame' },
@@ -72222,7 +72231,11 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'well well-sm frame', id: 'gamename' },
-						title
+						_react2.default.createElement(
+							'span',
+							{ className: 'text-muted' },
+							title
+						)
 					)
 				);
 			}
@@ -72431,10 +72444,10 @@
 					{ className: 'chart' },
 					_react2.default.createElement(
 						_recharts.ResponsiveContainer,
-						{ height: 240 },
+						{ height: 200 },
 						_react2.default.createElement(
 							_recharts.AreaChart,
-							{ data: data, margin: { top: 75, right: 30, left: 0, bottom: 5 } },
+							{ data: data, margin: { top: 75, right: 60, left: 0, bottom: 5 } },
 							_react2.default.createElement(
 								'defs',
 								null,
