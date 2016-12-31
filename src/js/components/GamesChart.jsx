@@ -6,16 +6,12 @@ import { Link } from 'react-router';
 
 export default class GamesChart extends React.Component {
 
-	handleClick(e) {
-		window.location.assign(e.url)
-	}
-		
 	render() {
 		const { summary, data, rank } = this.props;
 		const { game, viewers, streamer, title, banner, url } = this.props.data;
 		const percentageOfTotalViewers = Math.round((viewers / summary.viewers) * 100)
 		return(
-			<div className="col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard">
+			<div className="col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 well well-sm gamecard" onClick={() => window.location.href = url}>
 				<div className="col-xs-6 frame">
 					<img src={banner} /><br />
 					{streamer}<br />
@@ -26,7 +22,7 @@ export default class GamesChart extends React.Component {
 					<h3><strong>{percentageOfTotalViewers}%</strong></h3><h6 className="text-muted"> of game's viewers</h6>
 				</div>
 				<div className="well well-sm frame" id="gamename">
-					{title}
+					<span className="text-muted">{title}</span>
 				</div>
 			</div>
 				)

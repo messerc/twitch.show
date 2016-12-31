@@ -11,6 +11,7 @@ export default class ChannelTable extends React.Component {
 		const channelsToRender = channelArray.map((data, i) => 
 			<ChannelStats key={data._id} 
 						  rank={i+1}
+						  url={data.channel.url}
 						  channels={data.channel.display_name} 
 						  game={data.channel.game} 
 						  viewers={data.viewers} 
@@ -21,8 +22,10 @@ export default class ChannelTable extends React.Component {
 
 
 		return (
-			<div className="container-fluid col-md-8 gamestable">
+			<div className="container-fluid col-md-8" style={{marginTop: '20px'}}>
+				<div className="row">
 				{channelsToRender}
+				</div>	
 			</div>
 			)
 	}
