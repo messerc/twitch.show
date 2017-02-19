@@ -102,6 +102,11 @@ export default class MainLayout extends React.Component {
 						<div className="col-md-2">
 						</div>
 					</div>
+				<div id="footer">
+					<a href="https://github.com/messerc/twitch.show">
+					<i className="fa fa-github fa-2x icon" aria-hidden="true" />
+					</a>
+				</div>
 			</div>
 			)
 		}
