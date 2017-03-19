@@ -78,6 +78,11 @@ export default class MainLayout extends React.Component {
 		if(this.state.summary && this.state.games && this.state.channels) {
 		return (
 			<div className="container-fluid">
+				<div id="header">
+					<a href="https://github.com/messerc/twitch.show">
+					<i className="fa fa-github fa-2x icon" aria-hidden="true" />
+					</a>
+				</div>
 				<div className="row">					
 					<div className="col-md-2 col-md-offset-2 col-xs-6 col-xs-offset-2">
 						<Header summary={this.state.summary} />
@@ -102,11 +107,6 @@ export default class MainLayout extends React.Component {
 						<div className="col-md-2">
 						</div>
 					</div>
-				<div id="footer">
-					<a href="https://github.com/messerc/twitch.show">
-					<i className="fa fa-github fa-2x icon" aria-hidden="true" />
-					</a>
-				</div>
 			</div>
 			)
 		}
