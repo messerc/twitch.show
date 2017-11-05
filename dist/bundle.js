@@ -36934,6 +36934,15 @@
 						{ className: 'container-fluid' },
 						_react2.default.createElement(
 							'div',
+							{ id: 'header' },
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/messerc/twitch.show' },
+								_react2.default.createElement('i', { className: 'fa fa-github fa-2x icon', 'aria-hidden': 'true' })
+							)
+						),
+						_react2.default.createElement(
+							'div',
 							{ className: 'row' },
 							_react2.default.createElement(
 								'div',
@@ -36962,15 +36971,6 @@
 							_react2.default.createElement('div', { className: 'col-md-2' }),
 							_react2.default.cloneElement(this.props.children, { games: this.state.games, summary: this.state.summary, channels: this.state.channels, historicGame: this.state.historicGame }),
 							_react2.default.createElement('div', { className: 'col-md-2' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ id: 'footer' },
-							_react2.default.createElement(
-								'a',
-								{ href: 'https://github.com/messerc/twitch.show' },
-								_react2.default.createElement('i', { className: 'fa fa-github fa-2x icon', 'aria-hidden': 'true' })
-							)
 						)
 					);
 				}
@@ -70982,8 +70982,76 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ScatterPlot = function (_React$Component) {
-		_inherits(ScatterPlot, _React$Component);
+	var CustomizedToolTip = function (_React$Component) {
+		_inherits(CustomizedToolTip, _React$Component);
+
+		function CustomizedToolTip() {
+			_classCallCheck(this, CustomizedToolTip);
+
+			return _possibleConstructorReturn(this, (CustomizedToolTip.__proto__ || Object.getPrototypeOf(CustomizedToolTip)).apply(this, arguments));
+		}
+
+		_createClass(CustomizedToolTip, [{
+			key: 'render',
+			value: function render() {
+				var active = this.props.active;
+
+				if (active) {
+					var payload = this.props.payload;
+
+					var displayInTip = payload[0].payload;
+					console.log(displayInTip);
+					return _react2.default.createElement(
+						'div',
+						{ className: 'well well-sm' },
+						_react2.default.createElement(
+							'h4',
+							null,
+							displayInTip.game.name
+						),
+						_react2.default.createElement('hr', { style: { borderColor: 'rgb(51, 51, 51)' } }),
+						_react2.default.createElement(
+							'p',
+							null,
+							_react2.default.createElement(
+								'span',
+								{ className: 'text-muted' },
+								'viewers:  '
+							),
+							displayInTip.viewers.toLocaleString()
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							_react2.default.createElement(
+								'span',
+								{ className: 'text-muted' },
+								'channels: '
+							),
+							displayInTip.channels.toLocaleString()
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							_react2.default.createElement(
+								'span',
+								{ className: 'text-muted' },
+								'avg viewers/channel: '
+							),
+							' ',
+							Math.round(displayInTip.viewers / displayInTip.channels).toLocaleString()
+						)
+					);
+				}
+				return null;
+			}
+		}]);
+
+		return CustomizedToolTip;
+	}(_react2.default.Component);
+
+	var ScatterPlot = function (_React$Component2) {
+		_inherits(ScatterPlot, _React$Component2);
 
 		function ScatterPlot() {
 			_classCallCheck(this, ScatterPlot);
@@ -71010,7 +71078,7 @@
 							_react2.default.createElement(_recharts.YAxis, { label: 'viewers', dataKey: 'viewers', type: 'number', tickLine: false, tick: false, domain: ['dataMin - 500', 'dataMax + 500'] }),
 							_react2.default.createElement(_recharts.ZAxis, { dataKey: 'viewers', domain: ['dataMin', 'dataMax'], range: [0, 300], name: 'percentage', unit: '%' }),
 							_react2.default.createElement(_recharts.Scatter, { name: 'game', data: games.top, isAnimationActive: false, stroke: 'rgba(200, 170, 200, 1)', fill: 'rgba(200, 170, 200, 0.7)' }),
-							_react2.default.createElement(_recharts.Tooltip, null)
+							_react2.default.createElement(_recharts.Tooltip, { content: _react2.default.createElement(CustomizedToolTip, null) })
 						)
 					)
 				);
